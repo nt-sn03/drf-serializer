@@ -1,3 +1,11 @@
 from django.db import models
 
-# Create your models here.
+
+class Category(models.Model):
+    name = models.CharField(max_length=128, unique=True)
+    description = models.TextField(blank=True, default='')
+    image = models.ImageField(upload_to="category-images/%Y/%m/%d/", blank=True, default="category-images/image.png")
+
+    def __str__(self):
+        return self.name
+    
